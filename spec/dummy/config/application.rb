@@ -7,6 +7,7 @@ require "sprockets/railtie"
 
 Bundler.require
 require "whoops"
+require "jquery-rails" # this should be auto-included with the Bundler.require :default, Rails.env, but it's not happening
 
 module Dummy
   class Application < Rails::Application

@@ -10,11 +10,10 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require whoops
-//= require whoops/hideshow
-//= require whoops/ui
-//= require whoops/jquery.form
-//= require whoops/jquery.equalHeight
-//= require whoops/tablesorter.min
+//= require jquery.form
+//= require jquery.equalHeight
+//= require jquery.tablesorter.min
+//= require hideshow
+//= require ui
+//= require_tree .
 //= require_self
