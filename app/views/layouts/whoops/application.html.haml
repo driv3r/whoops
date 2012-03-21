@@ -2,21 +2,33 @@
 %html
   %head
     %title Whoops
-    = stylesheet_link_tag 'whoops-application', :media => 'screen, projection'
-    /[if IE]
-      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
-      
-    = javascript_include_tag 'jquery-1.5.2.min', 'whoops'
-    = yield :extra_javascripts
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
     = csrf_meta_tag
 
   %body{:id => @body_id}
-    .topbar
-      .listfill
+    .navbar.navbar-fixed-top
+      .navbar-inner
         .container-fluid
-          = link_to "Whoops", whoops_event_groups_path, :class => "brand"
-    .container-fluid
-      .sidebar
-        = yield :sidebar
-      .content
-        = yield
+          = link_to "Whoops", root_path, :class => "brand"
+
+    - if flash.any?
+      #flashes.container-fluid
+        - if alert
+          .alert.alert-danger.fade.in{"data-alert" => "alert"}
+            = link_to raw("&times;"), "#", class: "close", "data-dismiss" => "alert"
+            = alert
+
+        - if notice
+          .alert.alert-success.fade.in{"data-alert" => "alert"}
+            = link_to raw("&times;"), "#", class: "close", "data-dismiss" => "alert"
+            = notice
+
+    #main.container-fluid
+      %header
+        %h1= yield :header_title
+      .row-fluid
+        .sidebar.span3
+          .well= yield :sidebar
+        .content.span9
+          = yield

@@ -1,119 +1,102 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+*/
+
+@import "bootstrap";
+
 body {
-  padding-top:60px;
-  color:#333;
+  padding-top: 60px;
+
 }
 
-li {
-  color: #333;
+.navbar {
+  .navbar-inner {
+    @include border-radius(0);
+  }
 }
 
-.listfill {
-  background:#555;
+.alert {
+  p {
+    margin: 0;
+  }
 }
 
 .alert-message.block-message {
-  border:none;
+  border: none;
 }
 
+#main {
 
-.topbar {
-  color:#999;
-  a {
-    color:white;
-  }
-}
+  .sidebar {
+    .pagination {
+      margin: 0;
 
-/* sidebar */
-.container-fluid .sidebar {
-  margin-left:-20px;  
-  margin-top:-20px;
-  padding-left:20px;
-  padding-right:20px;
-  width:200px;
-  background:#f8f7ef;
-    
-  input[type=text] {
-    width:190px;
-  }
-    
+      a, .current {
+        line-height: ($baseLineHeight * 2) - 2;
+        padding: 0;
+        border: none;
+        display: block;
+        float: left;
+        margin-right: 2px;
+      }
 
-}
-
-/* for kaminari pagination */
-.sidebar .pagination {
-  margin:0;
-
-  a, .current {
-    line-height: ($baseline * 2) - 2;
-    padding:0;
-    border:none;
-    display:block;
-    float:left;
-    margin-right:2px;  
+      .next, .first, .prev, .last { display: none; }
+    }
   }
 
-  .next, .first, .prev, .last { display:none; }
-}
+  .content {
+    .pagination {
+      height: $baseLineHeight * 2 - 2;
+      margin: $baseLineHeight 0;
 
-.content .pagination {
-  height: $baseline * 2 - 2;
-  margin: $baseline 0;
+      float: left;
+      margin: 0;
+      border: 1px solid #ddd;
+      border: 1px solid rgba(0,0,0,.15);
+      @include border-radius(3px);
+      @include box-shadow(0 1px 2px rgba(0,0,0,.05));
 
-  float: left;
-  margin: 0;
-  border: 1px solid #ddd;
-  border: 1px solid rgba(0,0,0,.15);
-  @include border-radius(3px);
-  @include box-shadow(0 1px 2px rgba(0,0,0,.05));
+      .page {
+        display: inline;
+      }
 
-  .page {
-    display: inline;
-  }
-  a, .current {
-    float: left;
-    padding: 0 14px;
-    line-height: ($baseline * 2) - 2;
-    border-right: 1px solid;
-    border-right-color: #ddd;
-    border-right-color: rgba(0,0,0,.15);
-    *border-right-color: #ddd; /* IE6-7 */
-    text-decoration: none;
-  }
-  a:hover,
-  .current {
-    background-color: lighten($blue, 45%);
-  }
-  .disabled a,
-  .disabled a:hover {
-    background-color: transparent;
-    color: $grayLight;
-  }
-  .next a {
-    border: 0;
+      a, .current {
+        float: left;
+        padding: 0 14px;
+        line-height: ($baseLineHeight * 2) - 2;
+        border-right: 1px solid;
+        border-right-color: #ddd;
+        border-right-color: rgba(0,0,0,.15);
+        *border-right-color: #ddd; /* IE6-7 */
+        text-decoration: none;
+      }
+      a:hover,
+      .current {
+        background-color: lighten($blue, 45%);
+      }
+      .disabled a,
+      .disabled a:hover {
+        background-color: transparent;
+        color: $grayLight;
+      }
+      .next a {
+        border: 0;
+      }
+    }
   }
 }
 
 /* main page table links */
-.event-group-list {
-  margin-top: 1em;
-
-  td {
-    padding:0;
-  }  
-
-  a {
-    display:block;
-    padding:10px 10px 9px;
-    
-    &:hover {
-      text-decoration:none;
-    }
-  }
-
-  tbody tr:hover {
-    background-color: lighten($blue, 45%);
-  }
-}
+.event-group-list {}
 
 .filter_selects label {
   cursor: pointer;
@@ -121,22 +104,22 @@ li {
 
 /* events for event group */
 .key {
-  font-weight:bold;
-  text-align:right;
+  font-weight: bold;
+  text-align: right;
 }
 
 ul.detail {
-  margin:0;
-    
+  margin: 0;
+
   li {
-    list-style:none;
+    list-style: none;
     ul {
-      margin-left:20px;
+      margin-left: 20px;
     }
   }
-  
+
   .key {
-    font-weight:normal;
-    color:$blue;
+    font-weight: normal;
+    color: $blue;
   }
 }

@@ -1,0 +1,13 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th.span4 Key
+      %th Value
+  %tbody
+    %tr
+      %th Message
+      %td= event.message
+    - event.details.to_a.sort{|a,b| a[0] <=> b[0]}.each do |detail|
+      %tr
+        %th= detail.first
+        %td= format_detail(detail.last)

@@ -10,5 +10,8 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe EventGroupsHelper do
+describe Whoops::EventGroupsHelper do
+  describe "scoped link"
+  describe "filter options"
+  describe "filter checked?"
 end

@@ -1,7 +1,6 @@
 = paginate(@event_groups)
 
-.clearfix
-%table.event-group-list.bordered-table.zebra-striped
+%table.table.table-striped.table-bordered
   %thead
     %tr
       %th.header Service
@@ -9,15 +8,15 @@
       %th.header Type
       %th.header Env
       %th.header Last Occurrence
-      %th.header
+      %th
   %tbody
     - @event_groups.each do |event_group|
       %tr
-        %td= link_to event_group.service, whoops_event_group_events_path(event_group)
-        %td= link_to event_group.message.truncate(50), whoops_event_group_events_path(event_group)
-        %td= link_to event_group.event_type, whoops_event_group_events_path(event_group)
-        %td= link_to event_group.environment, whoops_event_group_events_path(event_group)
-        %td= link_to event_group.last_recorded_at.to_s(:whoops_default), whoops_event_group_events_path(event_group)
-        %td= link_to event_group.events.count, whoops_event_group_events_path(event_group)
+        %td= link_to event_group.service, event_group_events_path(event_group)
+        %td= link_to event_group.message.truncate(50), event_group_events_path(event_group)
+        %td= link_to event_group.event_type, event_group_events_path(event_group)
+        %td= link_to event_group.environment, event_group_events_path(event_group)
+        %td= link_to event_group.last_recorded_at.to_s(:whoops_default), event_group_events_path(event_group)
+        %td= link_to event_group.events.count, event_group_events_path(event_group)
 
 = paginate(@event_groups)

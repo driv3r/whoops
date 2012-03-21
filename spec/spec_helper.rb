@@ -36,6 +36,8 @@ RSpec.configure do |config|
   config.after :suite do
     Mongoid::Config.master.collections.select{|c| c.name !~ /^system\./}.each(&:remove)
   end
+
+  config.include Whoops::Engine.routes.url_helpers
 end
 
 module Whoops

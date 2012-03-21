@@ -1,47 +1,43 @@
-- content_for :breadcrumbs do
-  = breadcrumbs(["Event Details", whoops_event_group_path(@event_group)])
-  
+- content_for :header_title, "Event Details: #{@event_group.message}"
 - content_for :sidebar do
-  .space
+  %section
     %h3 Instances
     = paginate @events, :previous_label => "", :next_label => ""
     %ul#instances
       - @events.each_with_index do |event, index|
         %li{:class => ("selected" if index == 0)}= link_to event.event_time.to_s(:whoops_default), event
-  .space
+  %section
     %h3.info-revealer
       Search
       = image_tag "/images/_ui/icn_info.png"
     %form
       %p
-        For more on searching, see "Search Event Details" in the 
+        For more on searching, see "Search Event Details" in the
         = link_to "documentation", "http://www.whoopsapp.com/#_search_event_details"
 
       %p= text_area_tag :query, params[:query]
-      
+
       %p
         %button.btn.primary search
         %button.btn.secondary#reset reset
 
 %article
-  %header
-    %h3= @event_group.message
-  %table.span8.bordered-table
+  %table.table.table-striped.table-bordered
     %thead
       %tr
-        %th.key Field
+        %th.span4 Field
         %th Value
     %tbody
       - [:environment, :event_type, :last_recorded_at].each do |field|
         %tr
-          %td.key= field.to_s.humanize
-          %td.value= @event_group.send(field)
+          %th= field.to_s.humanize
+          %td= @event_group.send(field)
 
-%article.module.width_full
+%article
   %header
     %h3 Details
   #event-details
     - if @events.empty?
       %p Your search returned no results.
-    - else 
-      = render :partial => "events/details", :object => @events.first, :as => :event
+    - else
+      = render @events.first
