@@ -28,7 +28,7 @@ RSpec.configure do |config|
   # methods or matchers
   require 'rspec/expectations'
   config.include RSpec::Matchers
-  
+
   config.before(:each) do
     Mongoid::Config.master.collections.select{|c| c.name !~ /^system\./}.each(&:remove)
   end
